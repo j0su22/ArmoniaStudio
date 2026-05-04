@@ -1,11 +1,11 @@
-import { useState, type FormEvent } from 'react'
+import { useState, useRef, type FormEvent } from 'react'
 import { Phone, Mail, MapPin, Send } from 'lucide-react'
 import { ScrollReveal } from '@/components/ui/ScrollReveal'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 
 const CONTACT_INFO = [
   { icon: Phone,  label: 'Teléfono / WhatsApp', value: '+503 0000-0000' },
-  { icon: Mail,   label: 'Correo',               value: 'hola@armoniaestudio.com' },
+  { icon: Mail,   label: 'Correo',               value: 'hola@armoniastudio.com' },
   { icon: MapPin, label: 'Ubicación',             value: 'San Salvador, El Salvador' },
 ]
 
@@ -20,18 +20,35 @@ const SERVICE_OPTIONS = [
   'Asesoría inmobiliaria',
 ]
 
-type Status = 'idle' | 'sending' | 'sent'
+type Status = 'idle' | 'sending' | 'sent' | 'error'
 
 export function Contacto() {
   const [status, setStatus] = useState<Status>('idle')
+  const formRef = useRef<HTMLFormElement>(null)
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault()
+    if (!formRef.current) return
+
+    const data = Object.fromEntries(new FormData(formRef.current))
     setStatus('sending')
-    setTimeout(() => {
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+
+      if (!res.ok) throw new Error('Server error')
+
       setStatus('sent')
-      setTimeout(() => setStatus('idle'), 3500)
-    }, 900)
+      formRef.current.reset()
+      setTimeout(() => setStatus('idle'), 4000)
+    } catch {
+      setStatus('error')
+      setTimeout(() => setStatus('idle'), 4000)
+    }
   }
 
   const labelCls = 'block text-[9px] font-bold tracking-[0.2em] uppercase text-muted mb-2'
@@ -75,25 +92,26 @@ export function Contacto() {
 
         {/* Form */}
         <ScrollReveal delay={0.15}>
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className={labelCls}>Nombre</label>
-                <input type="text" placeholder="Tu nombre" className={inputCls} required />
+                <input name="nombre" type="text" placeholder="Tu nombre" className={inputCls} required />
               </div>
               <div>
                 <label className={labelCls}>Email</label>
-                <input type="email" placeholder="tu@email.com" className={inputCls} required />
+                <input name="email" type="email" placeholder="tu@email.com" className={inputCls} required />
               </div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className={labelCls}>Teléfono</label>
-                <input type="tel" placeholder="+503 0000-0000" className={inputCls} />
+                <input name="telefono" type="tel" placeholder="+503 0000-0000" className={inputCls} />
               </div>
               <div>
                 <label className={labelCls}>Tipo de servicio</label>
                 <select
+                  name="servicio"
                   className={`${inputCls} appearance-none bg-[url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7'%3E%3Cpath d='M0 0l6 7 6-7' fill='none' stroke='%23A09891' stroke-width='1.5'/%3E%3C/svg%3E")] bg-no-repeat bg-[right_16px_center]`}
                 >
                   <option value="" disabled>Selecciona</option>
@@ -106,11 +124,20 @@ export function Contacto() {
             <div>
               <label className={labelCls}>Mensaje</label>
               <textarea
+                name="mensaje"
                 rows={5}
                 placeholder="Cuéntame sobre tu proyecto..."
                 className={`${inputCls} resize-none`}
+                required
               />
             </div>
+
+            {status === 'error' && (
+              <p className="text-[11px] text-red-500 font-medium">
+                Hubo un error al enviar el mensaje. Intenta de nuevo.
+              </p>
+            )}
+
             <button
               type="submit"
               disabled={status === 'sending'}
