@@ -6,6 +6,7 @@ export interface Project {
   year: number
   image: string | null
   description?: string
+  gallery?: string[]
 }
 
 export interface Property {
@@ -19,6 +20,7 @@ export interface Property {
   area?: string
   units?: number
   description?: string
+  gallery?: string[]
 }
 
 export interface Testimonial {

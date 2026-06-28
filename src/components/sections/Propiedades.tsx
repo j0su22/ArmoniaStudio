@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { ScrollReveal } from '@/components/ui/ScrollReveal'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 import { Button } from '@/components/ui/Button'
+import { GalleryModal } from '@/components/ui/GalleryModal'
 import { PROPERTIES } from '@/data'
 import type { Property } from '@/types'
 
@@ -10,9 +11,25 @@ type Mode = Property['mode']
 
 export function Propiedades() {
   const [mode, setMode] = useState<Mode>('venta')
+  const [gallery, setGallery] = useState<{ images: string[]; index: number; title: string } | null>(null)
   const filtered = PROPERTIES.filter((p) => p.mode === mode)
 
+  const openGallery = (prop: Property) => {
+    const images = prop.gallery ?? (prop.image ? [prop.image] : [])
+    if (images.length > 0) setGallery({ images, index: 0, title: prop.name })
+  }
+
   return (
+    <>
+    {gallery && (
+      <GalleryModal
+        {...gallery}
+        onClose={() => setGallery(null)}
+        onPrev={() => setGallery(g => g ? { ...g, index: (g.index - 1 + g.images.length) % g.images.length } : null)}
+        onNext={() => setGallery(g => g ? { ...g, index: (g.index + 1) % g.images.length } : null)}
+        onGoTo={(i) => setGallery(g => g ? { ...g, index: i } : null)}
+      />
+    )}
     <section id="propiedades" className="bg-cream py-24 px-12 lg:px-16">
       <div className="max-w-[1300px] mx-auto">
         {/* Header */}
@@ -63,7 +80,8 @@ export function Propiedades() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.4, delay: i * 0.06 }}
-                className="bg-cream-mid overflow-hidden group hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
+                className={`bg-cream-mid overflow-hidden group hover:-translate-y-1 hover:shadow-xl transition-all duration-300 ${prop.gallery?.length || prop.image ? 'cursor-pointer' : ''}`}
+                onClick={() => openGallery(prop)}
               >
                 <div className="relative overflow-hidden aspect-[4/3]">
                   {prop.image ? (
@@ -83,6 +101,11 @@ export function Propiedades() {
                   <span className="absolute top-3.5 left-3.5 bg-sage text-white text-[8px] font-bold tracking-[0.18em] uppercase px-2.5 py-1.5">
                     {prop.badge}
                   </span>
+                  {prop.gallery && prop.gallery.length > 1 && (
+                    <span className="absolute top-3.5 right-3.5 bg-charcoal/70 text-white text-[8px] font-semibold tracking-[0.08em] px-2 py-1.5">
+                      {prop.gallery.length} fotos
+                    </span>
+                  )}
                 </div>
                 <div className="p-5">
                   <p className="text-[12px] font-semibold text-charcoal mb-1">{prop.name}</p>
@@ -108,5 +131,6 @@ export function Propiedades() {
         </ScrollReveal>
       </div>
     </section>
+    </>
   )
 }

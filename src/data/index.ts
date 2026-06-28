@@ -1,5 +1,7 @@
 import type { Project, Property, Testimonial } from '@/types'
 
+const pda = (file: string) => `./images/portafolio/puerta-del-alma/${file}`
+
 export const PROJECTS: Project[] = [
   {
     id: 'puerta-del-alma',
@@ -7,7 +9,19 @@ export const PROJECTS: Project[] = [
     category: 'residencial',
     location: 'El Salvador',
     year: 2025,
-    image: './images/portafolio/puerta-del-alma/portada.jpg',
+    image: pda('portada.jpg'),
+    gallery: [
+      pda('portada.jpg'),
+      ...Array.from({ length: 12 }, (_, i) => pda(`sala-${i + 1}.jpg`)),
+      ...Array.from({ length: 23 }, (_, i) => pda(`dorm-principal-${i + 1}.jpg`)),
+      ...Array.from({ length: 12 }, (_, i) => pda(`dorm-junior-${i + 1}.jpg`)),
+      ...Array.from({ length: 7 }, (_, i) => pda(`cocina-${i + 1}.jpg`)),
+      ...Array.from({ length: 3 }, (_, i) => pda(`bano-social-${i + 1}.jpg`)),
+      ...Array.from({ length: 7 }, (_, i) => pda(`bano-dorm-${i + 1}.jpg`)),
+      ...Array.from({ length: 7 }, (_, i) => pda(`espacio-${i + 1}.jpg`)),
+      ...Array.from({ length: 3 }, (_, i) => pda(`terraza-${i + 1}.jpg`)),
+      ...Array.from({ length: 17 }, (_, i) => pda(`antes-despues-${i + 1}.jpg`)),
+    ],
   },
   {
     id: 'park-tower',
@@ -59,46 +73,78 @@ export const PROJECTS: Project[] = [
   },
 ]
 
+const prop = (id: string, file: string) => `./images/propiedades/${id}/${file}`
+
 export const PROPERTIES: Property[] = [
   {
     id: 'bodega-chalchuapa',
     name: 'Bodega Chalchuapa',
     location: 'Chalchuapa, Santa Ana',
     mode: 'venta',
-    image: './images/propiedades/bodega-chalchuapa/portada.jpg',
+    image: prop('bodega-chalchuapa', 'portada.jpg'),
     badge: 'En Venta',
+    gallery: [
+      prop('bodega-chalchuapa', 'portada.jpg'),
+      prop('bodega-chalchuapa', 'img_5168.jpg'),
+      prop('bodega-chalchuapa', 'img_5170.jpg'),
+      prop('bodega-chalchuapa', 'img_5171.jpg'),
+      prop('bodega-chalchuapa', 'img_5177.jpg'),
+      prop('bodega-chalchuapa', 'img_5180.jpg'),
+      prop('bodega-chalchuapa', 'img_5181.jpg'),
+    ],
   },
   {
     id: 'edificio-centro-historico',
     name: 'Edificio Centro Histórico',
     location: 'Centro Histórico, San Salvador',
     mode: 'venta',
-    image: './images/propiedades/edificio-centro-historico/portada.jpg',
+    image: prop('edificio-centro-historico', 'portada.jpg'),
     badge: 'En Venta',
+    gallery: [
+      prop('edificio-centro-historico', 'portada.jpg'),
+      prop('edificio-centro-historico', 'img_5061.jpg'),
+      prop('edificio-centro-historico', 'img_5063.jpg'),
+    ],
   },
   {
     id: 'edificio-comercial-proceres',
     name: 'Edificio Comercial Los Próceres',
     location: 'Cerca de Los Próceres, San Salvador',
     mode: 'venta',
-    image: './images/propiedades/edificio-comercial-proceres/portada.jpg',
+    image: prop('edificio-comercial-proceres', 'portada.jpg'),
     badge: 'En Venta',
+    gallery: [
+      prop('edificio-comercial-proceres', 'portada.jpg'),
+      prop('edificio-comercial-proceres', 'img-2.jpg'),
+      prop('edificio-comercial-proceres', 'img-3.jpg'),
+      prop('edificio-comercial-proceres', 'img-4.png'),
+      prop('edificio-comercial-proceres', 'img-5.png'),
+    ],
   },
   {
     id: 'ranchador-bodega',
     name: 'El Ranchador con Bodega Industrial',
     location: 'El Salvador',
     mode: 'venta',
-    image: './images/propiedades/ranchador-bodega/portada.jpg',
+    image: prop('ranchador-bodega', 'portada.jpg'),
     badge: 'En Venta',
+    gallery: ['portada.jpg', 'img_5195.jpg', 'img_5197.jpg', 'img_5199.jpg',
+      'img_5200.jpg', 'img_5203.jpg', 'img_5206.jpg', 'img_5207.jpg',
+      'img_5210.jpg', 'img_5213.jpg', 'img_5216.jpg'].map(f => prop('ranchador-bodega', f)),
   },
   {
     id: 'locales-santa-ana',
     name: 'Locales Centro Santa Ana',
     location: 'Centro, Santa Ana',
     mode: 'venta',
-    image: './images/propiedades/locales-santa-ana/portada.jpg',
+    image: prop('locales-santa-ana', 'portada.jpg'),
     badge: 'En Venta',
+    gallery: [
+      prop('locales-santa-ana', 'portada.jpg'),
+      prop('locales-santa-ana', 'img_5223.jpg'),
+      prop('locales-santa-ana', 'img_5225.jpg'),
+      prop('locales-santa-ana', 'img_5226.jpg'),
+    ],
   },
   {
     id: 'villas-molino',
@@ -116,25 +162,44 @@ export const PROPERTIES: Property[] = [
     price: '$2,000,000',
     area: '2,957 m²',
     units: 5,
-    image: './images/propiedades/casa-lomas-san-francisco/portada.png',
+    image: prop('casa-lomas-san-francisco', 'portada.png'),
     badge: 'En Venta',
     description: '5 casas con escrituras independientes en un solo terreno. Ideal para inversión o renta.',
+    gallery: Array.from({ length: 21 }, (_, i) =>
+      prop('casa-lomas-san-francisco', i === 0 ? 'portada.png' : `${i + 1}.png`)
+    ),
   },
   {
     id: 'paseo-del-prado',
     name: 'Residencial Paseo del Prado',
     location: 'El Salvador',
     mode: 'alquiler',
-    image: './images/propiedades/paseo-del-prado/portada.jpg',
+    image: prop('paseo-del-prado', 'portada.jpg'),
     badge: 'En Alquiler',
+    gallery: [
+      prop('paseo-del-prado', 'portada.jpg'),
+      prop('paseo-del-prado', 'sala-comedor.jpg'),
+      prop('paseo-del-prado', 'cocina.jpg'),
+      prop('paseo-del-prado', 'dormitorio-1.jpg'),
+      prop('paseo-del-prado', 'dormitorio-2.jpg'),
+      prop('paseo-del-prado', 'dormitorio-3.jpg'),
+      prop('paseo-del-prado', 'bano-dormitorio.jpg'),
+      prop('paseo-del-prado', 'bano-social.jpg'),
+      prop('paseo-del-prado', 'bano-compartido.jpg'),
+      prop('paseo-del-prado', 'area-lavado.jpg'),
+      prop('paseo-del-prado', 'area-lavado-2.jpg'),
+      prop('paseo-del-prado', 'escaleras.jpg'),
+      prop('paseo-del-prado', 'patio.jpg'),
+    ],
   },
   {
     id: 'puerta-del-alma-prop',
     name: 'Puerta del Alma',
     location: 'El Salvador',
     mode: 'venta',
-    image: './images/portafolio/puerta-del-alma/portada.jpg',
+    image: pda('portada.jpg'),
     badge: 'En Venta',
+    gallery: [pda('portada.jpg'), pda('sala-1.jpg'), pda('dorm-principal-1.jpg'), pda('cocina-1.jpg')],
   },
   {
     id: 'park-tower-prop',
