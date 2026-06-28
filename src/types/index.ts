@@ -12,9 +12,13 @@ export interface Property {
   id: string
   name: string
   location: string
-  mode: 'venta'
+  mode: 'venta' | 'alquiler'
   image: string | null
   badge: string
+  price?: string
+  area?: string
+  units?: number
+  description?: string
 }
 
 export interface Testimonial {

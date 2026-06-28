@@ -1,10 +1,17 @@
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ScrollReveal } from '@/components/ui/ScrollReveal'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 import { Button } from '@/components/ui/Button'
 import { PROPERTIES } from '@/data'
+import type { Property } from '@/types'
+
+type Mode = Property['mode']
 
 export function Propiedades() {
+  const [mode, setMode] = useState<Mode>('venta')
+  const filtered = PROPERTIES.filter((p) => p.mode === mode)
+
   return (
     <section id="propiedades" className="bg-cream py-24 px-12 lg:px-16">
       <div className="max-w-[1300px] mx-auto">
@@ -26,10 +33,29 @@ export function Propiedades() {
           </div>
         </ScrollReveal>
 
+        {/* Toggle */}
+        <ScrollReveal delay={0.05}>
+          <div className="flex gap-2 mb-10">
+            {(['venta', 'alquiler'] as Mode[]).map((m) => (
+              <button
+                key={m}
+                onClick={() => setMode(m)}
+                className={`text-[10px] font-bold tracking-[0.14em] uppercase px-6 py-3 transition-all duration-200 cursor-pointer ${
+                  mode === m
+                    ? 'bg-charcoal text-white'
+                    : 'bg-cream-mid text-warm hover:bg-charcoal hover:text-white'
+                }`}
+              >
+                En {m.charAt(0).toUpperCase() + m.slice(1)}
+              </button>
+            ))}
+          </div>
+        </ScrollReveal>
+
         {/* Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           <AnimatePresence mode="popLayout">
-            {PROPERTIES.map((prop, i) => (
+            {filtered.map((prop, i) => (
               <motion.article
                 key={prop.id}
                 layout
