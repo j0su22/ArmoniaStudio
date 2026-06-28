@@ -61,7 +61,7 @@ export function Contacto() {
               href="https://wa.me/50373473219?text=Hola%2C%20me%20contacto%20desde%20el%20sitio%20web%20de%20Armon%C3%ADa%20Estudio."
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-4 bg-[#25D366] text-white px-8 py-5 hover:bg-[#1fba5a] transition-colors duration-250 group"
+              className="flex items-center gap-4 bg-[#25D366] text-white px-8 py-5 rounded-xl hover:bg-[#1fba5a] transition-colors duration-200 group"
             >
               <MessageCircle size={22} className="flex-shrink-0" />
               <div>
@@ -76,7 +76,7 @@ export function Contacto() {
 
             <a
               href="mailto:gabrielaaguilarconsultora@gmail.com?subject=Consulta%20desde%20Armon%C3%ADa%20Estudio"
-              className="flex items-center gap-4 bg-charcoal text-white px-8 py-5 hover:bg-sage-dark transition-colors duration-250 group"
+              className="flex items-center gap-4 bg-charcoal text-white px-8 py-5 rounded-xl hover:bg-sage-dark transition-colors duration-200 group"
             >
               <Mail size={22} className="flex-shrink-0" />
               <div>
@@ -89,17 +89,33 @@ export function Contacto() {
               </div>
             </a>
 
-            <p className="text-[11px] font-light text-muted mt-2 leading-relaxed">
-              También puedes seguirnos en Instagram{' '}
-              <a
-                href="https://www.instagram.com/armoniaestudiosv/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sage hover:text-sage-dark transition-colors duration-200"
-              >
-                @armoniaestudiosv
-              </a>
-            </p>
+            <a
+              href="https://www.instagram.com/armoniaestudiosv/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-4 text-white px-8 py-5 rounded-xl transition-opacity duration-200 hover:opacity-90 group"
+              style={{ background: 'linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)' }}
+            >
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+              <div>
+                <p className="text-[11px] font-bold tracking-[0.16em] uppercase mb-0.5">Instagram</p>
+                <p className="text-[12px] font-light opacity-85">@armoniaestudiosv</p>
+              </div>
+            </a>
+
+            <a
+              href="https://www.facebook.com/share/1D3Yooqd4n/?mibextid=wwXIfr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-4 text-white px-8 py-5 rounded-xl transition-opacity duration-200 hover:opacity-90 group"
+              style={{ background: '#1877F2' }}
+            >
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" className="flex-shrink-0"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              <div>
+                <p className="text-[11px] font-bold tracking-[0.16em] uppercase mb-0.5">Facebook</p>
+                <p className="text-[12px] font-light opacity-85">Armonía Estudio / interiorismo y real estate</p>
+              </div>
+            </a>
           </div>
         </ScrollReveal>
       </div>

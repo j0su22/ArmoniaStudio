@@ -11,9 +11,9 @@ const PROP_CARDS = [
   },
   {
     image: './images/portafolio/puerta-del-alma/dormitorio-principal.jpg',
-    category: 'Consultorios',
-    title: 'Confianza desde el primer vistazo',
-    desc: 'Ambientes que transmiten profesionalismo y bienestar.',
+    category: 'Airbnb',
+    title: 'Rentabilidad con estilo',
+    desc: 'Espacios diseñados para enamorar huéspedes y maximizar reservas.',
   },
 ]
 

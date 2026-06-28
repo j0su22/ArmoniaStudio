@@ -26,33 +26,29 @@ export const PROJECTS: Project[] = [
     name: 'Puerta del Alma',
     category: 'residencial',
     location: 'El Salvador',
-    year: 2025,
     image: pda('portada.jpg'),
     gallerySections: PDA_SECTIONS,
     gallery: PDA_SECTIONS.flatMap((s) => s.images),
   },
   {
     id: 'park-tower',
-    name: 'Park Tower',
-    category: 'residencial',
+    name: 'Park Tower Torre A',
+    category: 'airbnb',
     location: 'El Salvador',
-    year: 2025,
     image: null,
   },
   {
     id: 'garden-tower',
     name: 'Garden Tower',
-    category: 'residencial',
+    category: 'airbnb',
     location: 'El Salvador',
-    year: 2024,
     image: null,
   },
   {
     id: 'art-haus',
     name: 'Art Haus',
-    category: 'comercial',
+    category: 'residencial',
     location: 'El Salvador',
-    year: 2024,
     image: null,
   },
   {
@@ -60,7 +56,6 @@ export const PROJECTS: Project[] = [
     name: 'Consultorio Cirugía Plástica I',
     category: 'consultorio',
     location: 'El Salvador',
-    year: 2024,
     image: null,
   },
   {
@@ -68,7 +63,6 @@ export const PROJECTS: Project[] = [
     name: 'Consultorio Cirugía Plástica II',
     category: 'consultorio',
     location: 'El Salvador',
-    year: 2024,
     image: null,
   },
   {
@@ -76,7 +70,6 @@ export const PROJECTS: Project[] = [
     name: 'De Casa a Apartamentos',
     category: 'comercial',
     location: 'El Salvador',
-    year: 2023,
     image: null,
   },
 ]
@@ -211,7 +204,7 @@ export const PROPERTIES: Property[] = [
   },
   {
     id: 'park-tower-prop',
-    name: 'Park Tower',
+    name: 'Park Tower Torre B',
     location: 'El Salvador',
     mode: 'venta',
     image: null,
@@ -230,14 +223,14 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     id: 't2',
     quote: 'Transformaron nuestro Airbnb por completo. Las reservas aumentaron un 60% y las reseñas hablan solas. Cada detalle fue pensado para el huésped.',
-    author: 'Roberto Hernández',
+    author: 'Gustavo Alas',
     service: 'Diseño Estratégico Airbnb',
     rating: 5,
   },
   {
     id: 't3',
     quote: 'No solo diseñaron nuestra casa, sino que nos acompañaron en todo el proceso con una paciencia y profesionalismo increíbles. El resultado superó nuestras expectativas.',
-    author: 'Familia Martínez',
+    author: 'Antonio Chávez',
     service: 'Diseño Residencial Integral',
     rating: 5,
   },
@@ -246,7 +239,7 @@ export const TESTIMONIALS: Testimonial[] = [
 export const NAV_LINKS = [
   { label: 'Inicio', href: '#inicio' },
   { label: 'Diseño de Interiores', href: '#portafolio' },
-  { label: 'Propiedades', href: '#propiedades' },
+  { label: 'Bienes y Raíces', href: '#propiedades' },
   { label: 'Nosotros', href: '#nosotros' },
   { label: 'Contacto', href: '#contacto' },
 ]

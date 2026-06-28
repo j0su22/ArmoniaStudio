@@ -63,7 +63,7 @@ export function Propiedades() {
                     : 'bg-cream-mid text-warm hover:bg-charcoal hover:text-white'
                 }`}
               >
-                En {m.charAt(0).toUpperCase() + m.slice(1)}
+                {m === 'venta' ? 'Comprar' : 'Alquilar'}
               </button>
             ))}
           </div>
@@ -92,8 +92,11 @@ export function Propiedades() {
                       style={{ filter: 'saturate(0.85)' }}
                     />
                   ) : (
-                    <div className="w-full h-full bg-cream-dark flex items-center justify-center">
-                      <p className="font-display text-[18px] font-light text-warm text-center px-4">
+                    <div className="w-full h-full bg-charcoal flex flex-col items-center justify-center gap-2">
+                      <span className="text-[7px] font-bold tracking-[0.28em] uppercase text-sage border border-sage/40 px-2.5 py-1">
+                        Próximamente
+                      </span>
+                      <p className="font-display text-[16px] font-light text-white/70 text-center px-4">
                         {prop.name}
                       </p>
                     </div>

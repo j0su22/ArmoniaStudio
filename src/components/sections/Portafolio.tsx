@@ -4,7 +4,7 @@ import { ScrollReveal } from '@/components/ui/ScrollReveal'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 import { GalleryModal } from '@/components/ui/GalleryModal'
 import { PROJECTS, PROJECT_CATEGORIES } from '@/data'
-import type { ProjectCategory } from '@/types'
+import type { ProjectCategory, GallerySection } from '@/types'
 
 const CATEGORY_LABELS: Record<string, string> = {
   residencial: 'Residencial',
@@ -14,8 +14,8 @@ const CATEGORY_LABELS: Record<string, string> = {
 }
 
 const GRID_SPANS = [
-  'lg:col-span-7',
-  'lg:col-span-5',
+  'lg:col-span-8',
+  'lg:col-span-4',
   'lg:col-span-4',
   'lg:col-span-8',
   'lg:col-span-6',
@@ -25,21 +25,24 @@ const GRID_SPANS = [
 
 const ASPECT_RATIOS = [
   'aspect-[4/3]',
-  'aspect-[3/4]',
-  'aspect-[3/4]',
-  'aspect-[16/9]',
+  '',
+  '',
+  'aspect-[4/3]',
   'aspect-[4/3]',
   'aspect-[4/3]',
   'aspect-[21/9]',
 ]
 
+// 4-col items fill the row height set by their 8-col partner instead of using their own aspect-ratio
+const FILL_HEIGHT = [false, true, true, false, false, false, false]
+
 export function Portafolio() {
   const [active, setActive] = useState<ProjectCategory>('all')
-  const [gallery, setGallery] = useState<{ images: string[]; index: number; title: string; sections?: import('@/types').GallerySection[] } | null>(null)
+  const [gallery, setGallery] = useState<{ images: string[]; index: number; title: string; sections?: GallerySection[] } | null>(null)
 
   const filtered = active === 'all' ? PROJECTS : PROJECTS.filter((p) => p.category === active)
 
-  const openGallery = (images: string[], title: string, sections?: import('@/types').GallerySection[]) => {
+  const openGallery = (images: string[], title: string, sections?: GallerySection[]) => {
     if (images.length > 0) setGallery({ images, index: 0, title, sections })
   }
 
@@ -57,7 +60,7 @@ export function Portafolio() {
         onGoTo={(i) => setGallery(g => g ? { ...g, index: i } : null)}
       />
     )}
-    <section id="portafolio" className="bg-cream-mid py-24 px-12 lg:px-16">
+    <section id="portafolio" className="bg-cream-mid pt-24 pb-10 px-12 lg:px-16">
       <div className="max-w-[1300px] mx-auto">
         {/* Header */}
         <ScrollReveal>
@@ -110,7 +113,7 @@ export function Portafolio() {
                 className={`col-span-12 ${GRID_SPANS[i] ?? 'lg:col-span-6'} relative overflow-hidden group cursor-pointer`}
                 onClick={() => project.gallery?.length && openGallery(project.gallery, project.name, project.gallerySections)}
               >
-                <div className={`relative ${ASPECT_RATIOS[i] ?? 'aspect-[4/3]'}`}>
+                <div className={FILL_HEIGHT[i] ? 'relative h-full' : `relative ${ASPECT_RATIOS[i] ?? 'aspect-[4/3]'}`}>
                   {project.image ? (
                     <>
                       <img
@@ -123,10 +126,10 @@ export function Portafolio() {
                       />
                       {/* Overlay */}
                       <div
-                        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex flex-col justify-end p-6"
+                        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6"
                         style={{ background: 'linear-gradient(to top, rgba(43,43,43,.84) 0%, rgba(43,43,43,.06) 55%, transparent 100%)' }}
                       >
-                        <div className="translate-y-3 group-hover:translate-y-0 transition-transform duration-400">
+                        <div className="translate-y-3 group-hover:translate-y-0 transition-transform duration-300">
                           <p className="text-[9px] font-bold tracking-[0.22em] uppercase text-sage mb-1.5">
                             {CATEGORY_LABELS[project.category]}
                           </p>
@@ -134,7 +137,7 @@ export function Portafolio() {
                             {project.name}
                           </p>
                           <p className="text-[10px] text-white/55">
-                            {project.location} · {project.year}
+                            {project.location}
                             {project.gallery && project.gallery.length > 1 && ` · ${project.gallery.length} fotos`}
                           </p>
                         </div>
@@ -149,7 +152,7 @@ export function Portafolio() {
                         {project.name}
                       </p>
                       <p className="text-[9px] text-white/35 tracking-[0.1em] uppercase">
-                        {CATEGORY_LABELS[project.category]} · {project.year}
+                        {CATEGORY_LABELS[project.category]}
                       </p>
                     </div>
                   )}

@@ -3,12 +3,12 @@ import { Button } from '@/components/ui/Button'
 
 export function EstiloCta() {
   return (
-    <section className="grid grid-cols-1 lg:grid-cols-2 bg-cream-mid">
-      <div className="relative min-h-[360px] lg:min-h-full overflow-hidden">
+    <section className="grid grid-cols-1 lg:grid-cols-2 bg-cream-mid pt-12 pb-16">
+      <div className="relative min-h-[420px] lg:min-h-[600px] overflow-hidden bg-cream-mid">
         <img
-          src="./images/portadas/hero-2.jpg"
+          src="./images/portadas/hero-4.png"
           alt="Descubre tu estilo"
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-contain"
           style={{ filter: 'saturate(0.85)' }}
         />
       </div>

@@ -8,7 +8,7 @@ export function CtaFinal() {
       <div className="max-w-[800px] mx-auto">
         <ScrollReveal>
           <h2 className="font-display text-[clamp(36px,4.5vw,62px)] font-light leading-[1.15] text-white mb-4">
-            ¿Buscas diseñar o vender<br />una propiedad?
+            ¿Buscas diseñar, comprar<br />o vender una propiedad?
           </h2>
         </ScrollReveal>
         <ScrollReveal delay={0.1}>

@@ -14,7 +14,7 @@ export function Hero() {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="text-[10px] font-bold tracking-[0.28em] uppercase text-sage mb-7"
         >
-          Diseño de Interiores
+          Diseño de Interiores / Bienes y Raíces
         </motion.p>
 
         <h1 className="font-display text-[clamp(44px,5.5vw,80px)] font-light leading-[1.05] text-charcoal mb-7">

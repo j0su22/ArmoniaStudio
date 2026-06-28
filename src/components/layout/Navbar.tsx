@@ -33,7 +33,7 @@ export function Navbar() {
 
       <a
         href="#contacto"
-        className="ml-6 flex-shrink-0 hidden md:inline-flex items-center gap-2 bg-charcoal text-white text-[10px] font-bold tracking-[0.14em] uppercase px-5 py-3 hover:bg-sage-dark transition-colors duration-250"
+        className="ml-6 flex-shrink-0 hidden md:inline-flex items-center gap-2 bg-charcoal text-white text-[10px] font-bold tracking-[0.14em] uppercase px-5 py-3 hover:bg-sage-dark transition-colors duration-200"
       >
         <Calendar size={12} />
         Agenda una visita

@@ -8,7 +8,6 @@ export interface Project {
   name: string
   category: 'residencial' | 'airbnb' | 'consultorio' | 'comercial'
   location: string
-  year: number
   image: string | null
   description?: string
   gallery?: string[]

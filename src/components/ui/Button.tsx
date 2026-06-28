@@ -2,7 +2,7 @@ import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from 'reac
 
 type Variant = 'primary' | 'ghost' | 'white' | 'outline-white'
 
-const BASE = 'inline-flex items-center gap-2.5 text-[10px] font-bold tracking-[0.16em] uppercase transition-all duration-250 cursor-pointer'
+const BASE = 'inline-flex items-center gap-2.5 text-[10px] font-bold tracking-[0.16em] uppercase transition-all duration-200 cursor-pointer'
 
 const VARIANTS: Record<Variant, string> = {
   primary:
