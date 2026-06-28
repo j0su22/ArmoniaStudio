@@ -12,7 +12,12 @@ const PDA_SECTIONS = [
   { label: 'Baño Dormitorio',     images: Array.from({ length: 7 },  (_, i) => pda(`bano-dorm-${i + 1}.jpg`)) },
   { label: 'Espacio Integrado',   images: Array.from({ length: 7 },  (_, i) => pda(`espacio-${i + 1}.jpg`)) },
   { label: 'Terraza',             images: Array.from({ length: 3 },  (_, i) => pda(`terraza-${i + 1}.jpg`)) },
-  { label: 'Antes y Después',     images: Array.from({ length: 16 }, (_, i) => pda(`antes-despues-${i + 1}.jpg`)) },
+  { label: 'Antes y Después',     images: [
+    pda('antes-despues-1.jpg'),
+    pda('antes-despues-2.png'),
+    ...Array.from({ length: 14 }, (_, i) => pda(`antes-despues-${i + 3}.jpg`)),
+    pda('antes-despues-17.png'),
+  ]},
 ]
 
 export const PROJECTS: Project[] = [
