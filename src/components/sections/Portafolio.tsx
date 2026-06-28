@@ -107,13 +107,13 @@ export function Portafolio() {
                 className={`col-span-12 ${GRID_SPANS[i] ?? 'lg:col-span-6'} relative overflow-hidden group cursor-pointer`}
                 onClick={() => project.gallery?.length && openGallery(project.gallery, project.name)}
               >
-                <div className={ASPECT_RATIOS[i] ?? 'aspect-[4/3]'}>
+                <div className={`relative ${ASPECT_RATIOS[i] ?? 'aspect-[4/3]'}`}>
                   {project.image ? (
                     <>
                       <img
                         src={project.image}
                         alt={project.name}
-                        className="w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.06]"
+                        className="absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.06]"
                         style={{ filter: 'saturate(0.78)' }}
                         onMouseEnter={(e) => (e.currentTarget.style.filter = 'saturate(1)')}
                         onMouseLeave={(e) => (e.currentTarget.style.filter = 'saturate(0.78)')}
@@ -138,7 +138,7 @@ export function Portafolio() {
                       </div>
                     </>
                   ) : (
-                    <div className="w-full h-full bg-cream-dark flex flex-col items-center justify-center gap-3 group-hover:bg-cream-mid transition-colors duration-300">
+                    <div className="absolute inset-0 bg-cream-dark flex flex-col items-center justify-center gap-3 group-hover:bg-cream-mid transition-colors duration-300">
                       <p className="text-[9px] font-bold tracking-[0.22em] uppercase text-muted">
                         {CATEGORY_LABELS[project.category]}
                       </p>
