@@ -13,10 +13,23 @@ const PDA_SECTIONS = [
   { label: 'Espacio Integrado',   images: Array.from({ length: 7 },  (_, i) => pda(`espacio-${i + 1}.jpg`)) },
   { label: 'Terraza',             images: Array.from({ length: 3 },  (_, i) => pda(`terraza-${i + 1}.jpg`)) },
   { label: 'Antes y Después',     images: [
-    pda('antes-despues-1.jpg'),
-    pda('antes-despues-2.png'),
-    ...Array.from({ length: 14 }, (_, i) => pda(`antes-despues-${i + 3}.jpg`)),
-    pda('antes-despues-17.png'),
+    pda('antes-despues-1.jpg'),   // fuente: 1
+    pda('antes-despues-9.jpg'),   // fuente: 2
+    pda('antes-despues-10.jpg'),  // fuente: 3
+    pda('antes-despues-11.jpg'),  // fuente: 4
+    pda('antes-despues-12.jpg'),  // fuente: 5
+    pda('antes-despues-13.jpg'),  // fuente: 6
+    pda('antes-despues-14.jpg'),  // fuente: 7
+    pda('antes-despues-15.jpg'),  // fuente: 8
+    pda('antes-despues-16.jpg'),  // fuente: 9
+    pda('antes-despues-2.png'),   // fuente: 10.PNG
+    pda('antes-despues-3.jpg'),   // fuente: 11
+    pda('antes-despues-4.jpg'),   // fuente: 12
+    pda('antes-despues-5.jpg'),   // fuente: 13
+    pda('antes-despues-6.jpg'),   // fuente: 14
+    pda('antes-despues-7.jpg'),   // fuente: 15
+    pda('antes-despues-8.jpg'),   // fuente: 16
+    pda('antes-despues-17.png'),  // fuente: PORTADA.PNG
   ]},
 ]
 
