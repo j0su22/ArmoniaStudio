@@ -22,8 +22,10 @@ Thumbs.db
 .idea/
 *.sw?
 
-# ── Project-local tooling (not part of the site) ──────────────────────────────
+# ── Local tooling (Claude Code, skills, graph) — no subir al repo ─────────────
 ProjectResources/
 .code-review-graph/
 .agents/
 .claude/
+.mcp.json
+skills-lock.json
