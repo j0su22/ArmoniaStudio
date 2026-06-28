@@ -138,15 +138,15 @@ export function Portafolio() {
                       </div>
                     </>
                   ) : (
-                    <div className="absolute inset-0 bg-cream-dark flex flex-col items-center justify-center gap-3 group-hover:bg-cream-mid transition-colors duration-300">
-                      <p className="text-[9px] font-bold tracking-[0.22em] uppercase text-muted">
-                        {CATEGORY_LABELS[project.category]}
-                      </p>
-                      <p className="font-display text-[22px] font-light text-warm text-center px-4">
+                    <div className="absolute inset-0 bg-charcoal flex flex-col items-center justify-center gap-2.5">
+                      <span className="text-[7px] font-bold tracking-[0.28em] uppercase text-sage border border-sage/40 px-2.5 py-1">
+                        Próximamente
+                      </span>
+                      <p className="font-display text-[20px] font-light text-white/80 text-center px-6">
                         {project.name}
                       </p>
-                      <p className="text-[10px] text-muted">
-                        {project.location} · {project.year}
+                      <p className="text-[9px] text-white/35 tracking-[0.1em] uppercase">
+                        {CATEGORY_LABELS[project.category]} · {project.year}
                       </p>
                     </div>
                   )}
