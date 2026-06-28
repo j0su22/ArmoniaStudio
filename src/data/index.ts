@@ -4,8 +4,8 @@ const pda = (file: string) => `./images/portafolio/puerta-del-alma/${file}`
 
 const PDA_SECTIONS = [
   { label: 'Portada',             images: [pda('portada.jpg')] },
-  { label: 'Sala',                images: Array.from({ length: 11 }, (_, i) => pda(`sala-${i + 1}.jpg`)) },
-  { label: 'Dormitorio Principal',images: Array.from({ length: 22 }, (_, i) => pda(`dorm-principal-${i + 1}.jpg`)) },
+  { label: 'Sala',                images: Array.from({ length: 12 }, (_, i) => pda(`sala-${i + 1}.jpg`)) },
+  { label: 'Dormitorio Principal',images: Array.from({ length: 23 }, (_, i) => pda(`dorm-principal-${i + 1}.jpg`)) },
   { label: 'Dormitorio Junior',   images: Array.from({ length: 12 }, (_, i) => pda(`dorm-junior-${i + 1}.jpg`)) },
   { label: 'Cocina y Comedor',    images: Array.from({ length: 7 },  (_, i) => pda(`cocina-${i + 1}.jpg`)) },
   { label: 'Baño Social',         images: Array.from({ length: 3 },  (_, i) => pda(`bano-social-${i + 1}.jpg`)) },
@@ -118,8 +118,8 @@ export const PROPERTIES: Property[] = [
       prop('edificio-comercial-proceres', 'portada.jpg'),
       prop('edificio-comercial-proceres', 'img-2.jpg'),
       prop('edificio-comercial-proceres', 'img-3.jpg'),
-      prop('edificio-comercial-proceres', 'img-4.png'),
-      prop('edificio-comercial-proceres', 'img-5.png'),
+      prop('edificio-comercial-proceres', 'img-4.jpg'),
+      prop('edificio-comercial-proceres', 'img-5.jpg'),
     ],
   },
   {
