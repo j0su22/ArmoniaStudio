@@ -21,3 +21,9 @@ Thumbs.db
 .vscode/
 .idea/
 *.sw?
+
+# ── Project-local tooling (not part of the site) ──────────────────────────────
+ProjectResources/
+.code-review-graph/
+.agents/
+.claude/
