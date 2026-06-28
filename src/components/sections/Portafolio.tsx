@@ -35,19 +35,22 @@ const ASPECT_RATIOS = [
 
 export function Portafolio() {
   const [active, setActive] = useState<ProjectCategory>('all')
-  const [gallery, setGallery] = useState<{ images: string[]; index: number; title: string } | null>(null)
+  const [gallery, setGallery] = useState<{ images: string[]; index: number; title: string; sections?: import('@/types').GallerySection[] } | null>(null)
 
   const filtered = active === 'all' ? PROJECTS : PROJECTS.filter((p) => p.category === active)
 
-  const openGallery = (images: string[], title: string) => {
-    if (images.length > 0) setGallery({ images, index: 0, title })
+  const openGallery = (images: string[], title: string, sections?: import('@/types').GallerySection[]) => {
+    if (images.length > 0) setGallery({ images, index: 0, title, sections })
   }
 
   return (
     <>
     {gallery && (
       <GalleryModal
-        {...gallery}
+        images={gallery.images}
+        index={gallery.index}
+        title={gallery.title}
+        sections={gallery.sections}
         onClose={() => setGallery(null)}
         onPrev={() => setGallery(g => g ? { ...g, index: (g.index - 1 + g.images.length) % g.images.length } : null)}
         onNext={() => setGallery(g => g ? { ...g, index: (g.index + 1) % g.images.length } : null)}
@@ -105,7 +108,7 @@ export function Portafolio() {
                 exit={{ opacity: 0, scale: 0.94 }}
                 transition={{ duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94], delay: i * 0.04 }}
                 className={`col-span-12 ${GRID_SPANS[i] ?? 'lg:col-span-6'} relative overflow-hidden group cursor-pointer`}
-                onClick={() => project.gallery?.length && openGallery(project.gallery, project.name)}
+                onClick={() => project.gallery?.length && openGallery(project.gallery, project.name, project.gallerySections)}
               >
                 <div className={`relative ${ASPECT_RATIOS[i] ?? 'aspect-[4/3]'}`}>
                   {project.image ? (

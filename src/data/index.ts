@@ -2,6 +2,19 @@ import type { Project, Property, Testimonial } from '@/types'
 
 const pda = (file: string) => `./images/portafolio/puerta-del-alma/${file}`
 
+const PDA_SECTIONS = [
+  { label: 'Portada',             images: [pda('portada.jpg')] },
+  { label: 'Sala',                images: Array.from({ length: 11 }, (_, i) => pda(`sala-${i + 1}.jpg`)) },
+  { label: 'Dormitorio Principal',images: Array.from({ length: 22 }, (_, i) => pda(`dorm-principal-${i + 1}.jpg`)) },
+  { label: 'Dormitorio Junior',   images: Array.from({ length: 12 }, (_, i) => pda(`dorm-junior-${i + 1}.jpg`)) },
+  { label: 'Cocina y Comedor',    images: Array.from({ length: 7 },  (_, i) => pda(`cocina-${i + 1}.jpg`)) },
+  { label: 'Baño Social',         images: Array.from({ length: 3 },  (_, i) => pda(`bano-social-${i + 1}.jpg`)) },
+  { label: 'Baño Dormitorio',     images: Array.from({ length: 7 },  (_, i) => pda(`bano-dorm-${i + 1}.jpg`)) },
+  { label: 'Espacio Integrado',   images: Array.from({ length: 7 },  (_, i) => pda(`espacio-${i + 1}.jpg`)) },
+  { label: 'Terraza',             images: Array.from({ length: 3 },  (_, i) => pda(`terraza-${i + 1}.jpg`)) },
+  { label: 'Antes y Después',     images: Array.from({ length: 16 }, (_, i) => pda(`antes-despues-${i + 1}.jpg`)) },
+]
+
 export const PROJECTS: Project[] = [
   {
     id: 'puerta-del-alma',
@@ -10,18 +23,8 @@ export const PROJECTS: Project[] = [
     location: 'El Salvador',
     year: 2025,
     image: pda('portada.jpg'),
-    gallery: [
-      pda('portada.jpg'),
-      ...Array.from({ length: 12 }, (_, i) => pda(`sala-${i + 1}.jpg`)),
-      ...Array.from({ length: 23 }, (_, i) => pda(`dorm-principal-${i + 1}.jpg`)),
-      ...Array.from({ length: 12 }, (_, i) => pda(`dorm-junior-${i + 1}.jpg`)),
-      ...Array.from({ length: 7 }, (_, i) => pda(`cocina-${i + 1}.jpg`)),
-      ...Array.from({ length: 3 }, (_, i) => pda(`bano-social-${i + 1}.jpg`)),
-      ...Array.from({ length: 7 }, (_, i) => pda(`bano-dorm-${i + 1}.jpg`)),
-      ...Array.from({ length: 7 }, (_, i) => pda(`espacio-${i + 1}.jpg`)),
-      ...Array.from({ length: 3 }, (_, i) => pda(`terraza-${i + 1}.jpg`)),
-      ...Array.from({ length: 17 }, (_, i) => pda(`antes-despues-${i + 1}.jpg`)),
-    ],
+    gallerySections: PDA_SECTIONS,
+    gallery: PDA_SECTIONS.flatMap((s) => s.images),
   },
   {
     id: 'park-tower',

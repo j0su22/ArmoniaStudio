@@ -1,3 +1,8 @@
+export interface GallerySection {
+  label: string
+  images: string[]
+}
+
 export interface Project {
   id: string
   name: string
@@ -7,6 +12,7 @@ export interface Project {
   image: string | null
   description?: string
   gallery?: string[]
+  gallerySections?: GallerySection[]
 }
 
 export interface Property {
