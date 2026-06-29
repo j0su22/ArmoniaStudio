@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { ScrollReveal } from '@/components/ui/ScrollReveal'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 import { Button } from '@/components/ui/Button'
-import { GalleryModal } from '@/components/ui/GalleryModal'
+import { PropertyModal } from '@/components/ui/PropertyModal'
 import { PROPERTIES } from '@/data'
 import type { Property } from '@/types'
 
@@ -11,23 +11,15 @@ type Mode = Property['mode']
 
 export function Propiedades() {
   const [mode, setMode] = useState<Mode>('venta')
-  const [gallery, setGallery] = useState<{ images: string[]; index: number; title: string } | null>(null)
+  const [selected, setSelected] = useState<Property | null>(null)
   const filtered = PROPERTIES.filter((p) => p.mode === mode)
-
-  const openGallery = (prop: Property) => {
-    const all = prop.gallery ?? (prop.image ? [prop.image] : [])
-    const images = all.filter((src) => src !== prop.image)
-    const display = images.length > 0 ? images : all
-    if (display.length > 0) setGallery({ images: display, index: 0, title: prop.name })
-  }
 
   return (
     <>
-    {gallery && (
-      <GalleryModal
-        {...gallery}
-        onClose={() => setGallery(null)}
-        onPrev={() => setGallery(g => g ? { ...g, index: (g.index - 1 + g.images.length) % g.images.length } : null)}
+    {selected && (
+      <PropertyModal
+        property={selected}
+        onClose={() => setSelected(null)}
         onNext={() => setGallery(g => g ? { ...g, index: (g.index + 1) % g.images.length } : null)}
         onGoTo={(i) => setGallery(g => g ? { ...g, index: i } : null)}
       />
@@ -82,8 +74,8 @@ export function Propiedades() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.4, delay: i * 0.06 }}
-                className={`bg-cream-mid overflow-hidden group hover:-translate-y-1 hover:shadow-xl transition-all duration-300 ${prop.gallery?.length || prop.image ? 'cursor-pointer' : ''}`}
-                onClick={() => openGallery(prop)}
+                className="bg-cream-mid overflow-hidden group hover:-translate-y-1 hover:shadow-xl transition-all duration-300 cursor-pointer"
+                onClick={() => setSelected(prop)}
               >
                 <div className="relative overflow-hidden aspect-[4/3]">
                   {prop.image ? (
@@ -116,12 +108,12 @@ export function Propiedades() {
                   <p className="text-[12px] font-semibold text-charcoal mb-1">{prop.name}</p>
                   <p className="text-[11px] font-light text-muted mb-3.5">{prop.location}</p>
                   <div className="pt-3.5 border-t border-cream-dark">
-                    <a
-                      href="#contacto"
+                    <button
+                      onClick={() => setSelected(prop)}
                       className="text-[10px] font-bold tracking-[0.12em] uppercase text-sage hover:text-sage-dark transition-colors duration-200"
                     >
-                      Solicitar información
-                    </a>
+                      Ver detalle
+                    </button>
                   </div>
                 </div>
               </motion.article>

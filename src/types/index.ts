@@ -23,8 +23,11 @@ export interface Property {
   badge: string
   price?: string
   area?: string
+  builtArea?: string
   units?: number
   description?: string
+  features?: string[]
+  ideal?: string[]
   gallery?: string[]
 }
 
