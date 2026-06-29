@@ -1,24 +1,34 @@
+export interface GallerySection {
+  label: string
+  images: string[]
+}
+
 export interface Project {
   id: string
   name: string
-  category: 'residencial' | 'airbnb' | 'consultorio' | 'comercial' | 'homestaging'
+  category: 'residencial' | 'airbnb' | 'consultorio' | 'comercial'
   location: string
-  year: number
-  image: string
+  image: string | null
   description?: string
+  gallery?: string[]
+  gallerySections?: GallerySection[]
 }
 
 export interface Property {
   id: string
   name: string
-  price: string
   location: string
   mode: 'venta' | 'alquiler'
-  area: string
-  bedrooms: number
-  bathrooms: number
-  image: string
+  image: string | null
   badge: string
+  price?: string
+  area?: string
+  builtArea?: string
+  units?: number
+  description?: string
+  features?: string[]
+  ideal?: string[]
+  gallery?: string[]
 }
 
 export interface Testimonial {
@@ -37,5 +47,4 @@ export interface Service {
   tag: string
 }
 
-export type PropertyMode = 'venta' | 'alquiler'
 export type ProjectCategory = Project['category'] | 'all'

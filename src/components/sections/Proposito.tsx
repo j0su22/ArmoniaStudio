@@ -4,22 +4,22 @@ import { Button } from '@/components/ui/Button'
 
 const PROP_CARDS = [
   {
-    image: 'https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=700&q=80&auto=format&fit=crop',
-    category: 'Airbnb',
-    title: 'Espacios que atraen',
-    desc: 'Diseños que generan mejores reseñas y más reservas.',
+    image: './images/portafolio/puerta-del-alma/sala.webp',
+    category: 'Residencial',
+    title: 'Espacios que inspiran',
+    desc: 'Diseños que generan bienestar y marcan la diferencia.',
   },
   {
-    image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=700&q=80&auto=format&fit=crop',
-    category: 'Consultorios',
-    title: 'Confianza desde el primer vistazo',
-    desc: 'Ambientes que transmiten profesionalismo y bienestar.',
+    image: './images/portafolio/puerta-del-alma/dormitorio-principal.webp',
+    category: 'Airbnb',
+    title: 'Rentabilidad con estilo',
+    desc: 'Espacios diseñados para enamorar huéspedes y maximizar reservas.',
   },
 ]
 
 export function Proposito() {
   return (
-    <section className="bg-cream py-24 px-12 lg:px-16">
+    <section className="bg-cream py-24 px-6 sm:px-12 lg:px-16">
       <div className="max-w-[1300px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         {/* Text */}
         <div>
@@ -53,6 +53,8 @@ export function Proposito() {
                 alt={card.title}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 style={{ filter: 'saturate(0.85)' }}
+                loading="lazy"
+                decoding="async"
               />
               <div
                 className="absolute inset-0 flex flex-col justify-end p-5"

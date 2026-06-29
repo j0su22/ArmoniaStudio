@@ -2,42 +2,65 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ScrollReveal } from '@/components/ui/ScrollReveal'
 import { SectionLabel } from '@/components/ui/SectionLabel'
+import { GalleryModal } from '@/components/ui/GalleryModal'
 import { PROJECTS, PROJECT_CATEGORIES } from '@/data'
-import type { ProjectCategory } from '@/types'
+import type { ProjectCategory, GallerySection } from '@/types'
 
 const CATEGORY_LABELS: Record<string, string> = {
   residencial: 'Residencial',
   airbnb: 'Airbnb',
   consultorio: 'Consultorio',
   comercial: 'Comercial',
-  homestaging: 'Home Staging',
 }
 
 const GRID_SPANS = [
-  'lg:col-span-7',
-  'lg:col-span-5',
+  'lg:col-span-8',
+  'lg:col-span-4',
   'lg:col-span-4',
   'lg:col-span-8',
   'lg:col-span-6',
   'lg:col-span-6',
+  'lg:col-span-12',
 ]
 
 const ASPECT_RATIOS = [
   'aspect-[4/3]',
-  'aspect-[3/4]',
-  'aspect-[3/4]',
-  'aspect-[16/9]',
+  '',
+  '',
   'aspect-[4/3]',
   'aspect-[4/3]',
+  'aspect-[4/3]',
+  'aspect-[21/9]',
 ]
+
+// 4-col items fill the row height set by their 8-col partner instead of using their own aspect-ratio
+const FILL_HEIGHT = [false, true, true, false, false, false, false]
 
 export function Portafolio() {
   const [active, setActive] = useState<ProjectCategory>('all')
+  const [gallery, setGallery] = useState<{ images: string[]; index: number; title: string; sections?: GallerySection[] } | null>(null)
 
   const filtered = active === 'all' ? PROJECTS : PROJECTS.filter((p) => p.category === active)
 
+  const openGallery = (images: string[], title: string, sections?: GallerySection[]) => {
+    if (images.length > 0) setGallery({ images, index: 0, title, sections })
+  }
+
   return (
-    <section id="portafolio" className="bg-cream-mid py-24 px-12 lg:px-16">
+    <>
+    {gallery && (
+      <GalleryModal
+        images={gallery.images}
+        index={gallery.index}
+        title={gallery.title}
+        sections={gallery.sections}
+        onClose={() => setGallery(null)}
+        onPrev={() => setGallery(g => g ? { ...g, index: (g.index - 1 + g.images.length) % g.images.length } : null)}
+        onNext={() => setGallery(g => g ? { ...g, index: (g.index + 1) % g.images.length } : null)}
+        onGoTo={(i) => setGallery(g => g ? { ...g, index: i } : null)}
+      />
+    )}
+    <section id="portafolio" className="bg-cream-mid pt-24 pb-10 px-6 sm:px-12 lg:px-16">
       <div className="max-w-[1300px] mx-auto">
         {/* Header */}
         <ScrollReveal>
@@ -79,7 +102,13 @@ export function Portafolio() {
         {/* Grid */}
         <div className="grid grid-cols-12 gap-4">
           <AnimatePresence mode="popLayout">
-            {filtered.map((project, i) => (
+            {filtered.map((project, i) => {
+              const origIdx = PROJECTS.findIndex(p => p.id === project.id)
+              const isAll = active === 'all'
+              const colSpan = isAll ? (GRID_SPANS[origIdx] ?? 'lg:col-span-6') : 'lg:col-span-6'
+              const fillHeight = isAll && FILL_HEIGHT[origIdx]
+              const aspectClass = isAll ? (ASPECT_RATIOS[origIdx] ?? 'aspect-[4/3]') : 'aspect-[4/3]'
+              return (
               <motion.div
                 key={project.id}
                 layout
@@ -87,44 +116,62 @@ export function Portafolio() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.94 }}
                 transition={{ duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94], delay: i * 0.04 }}
-                className={`col-span-12 ${GRID_SPANS[i] ?? 'lg:col-span-6'} relative overflow-hidden group cursor-pointer`}
+                className={`col-span-12 ${colSpan} relative overflow-hidden group cursor-pointer`}
+                onClick={() => project.gallery?.length && openGallery(project.gallery, project.name, project.gallerySections)}
               >
-                <div className={ASPECT_RATIOS[i] ?? 'aspect-[4/3]'}>
-                  <img
-                    src={project.image}
-                    alt={project.name}
-                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.06]"
-                    style={{ filter: 'saturate(0.78)' }}
-                    onMouseEnter={(e) => (e.currentTarget.style.filter = 'saturate(1)')}
-                    onMouseLeave={(e) => (e.currentTarget.style.filter = 'saturate(0.78)')}
-                  />
-                  {/* Overlay */}
-                  <div
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex flex-col justify-end p-6"
-                    style={{ background: 'linear-gradient(to top, rgba(43,43,43,.84) 0%, rgba(43,43,43,.06) 55%, transparent 100%)' }}
-                  >
-                    <motion.div
-                      initial={{ y: 12 }}
-                      whileInView={{ y: 0 }}
-                      className="translate-y-3 group-hover:translate-y-0 transition-transform duration-400"
-                    >
-                      <p className="text-[9px] font-bold tracking-[0.22em] uppercase text-sage mb-1.5">
-                        {CATEGORY_LABELS[project.category]}
-                      </p>
-                      <p className="font-display text-[20px] font-normal text-white mb-0.5">
+                <div className={fillHeight ? 'relative h-full' : `relative ${aspectClass}`}>
+                  {project.image ? (
+                    <>
+                      <img
+                        src={project.image}
+                        alt={project.name}
+                        className="absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.06]"
+                        style={{ filter: 'saturate(0.78)' }}
+                        loading="lazy"
+                        decoding="async"
+                        onMouseEnter={(e) => (e.currentTarget.style.filter = 'saturate(1)')}
+                        onMouseLeave={(e) => (e.currentTarget.style.filter = 'saturate(0.78)')}
+                      />
+                      {/* Overlay */}
+                      <div
+                        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6"
+                        style={{ background: 'linear-gradient(to top, rgba(43,43,43,.84) 0%, rgba(43,43,43,.06) 55%, transparent 100%)' }}
+                      >
+                        <div className="translate-y-3 group-hover:translate-y-0 transition-transform duration-300">
+                          <p className="text-[9px] font-bold tracking-[0.22em] uppercase text-sage mb-1.5">
+                            {CATEGORY_LABELS[project.category]}
+                          </p>
+                          <p className="font-display text-[20px] font-normal text-white mb-0.5">
+                            {project.name}
+                          </p>
+                          <p className="text-[10px] text-white/55">
+                            {project.location}
+                            {project.gallery && project.gallery.length > 1 && ` · ${project.gallery.length} fotos`}
+                          </p>
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    <div className="absolute inset-0 bg-charcoal flex flex-col items-center justify-center gap-2.5">
+                      <span className="text-[7px] font-bold tracking-[0.28em] uppercase text-sage border border-sage/40 px-2.5 py-1">
+                        Próximamente
+                      </span>
+                      <p className="font-display text-[20px] font-light text-white/80 text-center px-6">
                         {project.name}
                       </p>
-                      <p className="text-[10px] text-white/55">
-                        {project.location} · {project.year}
+                      <p className="text-[9px] text-white/35 tracking-[0.1em] uppercase">
+                        {CATEGORY_LABELS[project.category]}
                       </p>
-                    </motion.div>
-                  </div>
+                    </div>
+                  )}
                 </div>
               </motion.div>
-            ))}
+              )
+            })}
           </AnimatePresence>
         </div>
       </div>
     </section>
+    </>
   )
 }

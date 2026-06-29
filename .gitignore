@@ -21,3 +21,11 @@ Thumbs.db
 .vscode/
 .idea/
 *.sw?
+
+# ── Local tooling (Claude Code, skills, graph) — no subir al repo ─────────────
+ProjectResources/
+.code-review-graph/
+.agents/
+.claude/
+.mcp.json
+skills-lock.json
