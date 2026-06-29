@@ -269,6 +269,7 @@ export const PROPERTIES: Property[] = [
     image: pda('portada.webp'),
     badge: 'En Venta',
     price: '$430,000 · Incluye muebles',
+    area: '102 m²',
     features: [
       'Dormitorio principal',
       'Dormitorio secundario',
