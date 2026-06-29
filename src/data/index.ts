@@ -268,7 +268,7 @@ export const PROPERTIES: Property[] = [
     mode: 'venta',
     image: pda('portada.webp'),
     badge: 'En Venta',
-    gallery: PDA_SECTIONS.flatMap((s) => s.images),
+    gallery: PDA_SECTIONS.filter((s) => s.label !== 'Antes y Después').flatMap((s) => s.images),
   },
   {
     id: 'park-tower-prop',
