@@ -184,7 +184,7 @@ export function PropertyModal({ property, onClose }: Props) {
           </div>
 
           {/* RIGHT — 70% — galería */}
-          <div className="lg:w-[70%] flex flex-col bg-cream-mid overflow-hidden min-h-[320px] lg:min-h-0">
+          <div className="lg:w-[70%] flex flex-col bg-cream-mid overflow-hidden min-h-[650px] lg:min-h-0">
             {images.length > 0 ? (
               <>
                 {/* Main image */}

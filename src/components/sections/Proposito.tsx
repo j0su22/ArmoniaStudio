@@ -4,13 +4,13 @@ import { Button } from '@/components/ui/Button'
 
 const PROP_CARDS = [
   {
-    image: './images/portafolio/puerta-del-alma/sala.webp',
+    image: './images/portafolio/puerta-del-alma/sala-1.webp',
     category: 'Residencial',
     title: 'Espacios que inspiran',
     desc: 'Diseños que generan bienestar y marcan la diferencia.',
   },
   {
-    image: './images/portafolio/puerta-del-alma/dormitorio-principal.webp',
+    image: './images/portafolio/puerta-del-alma/dorm-principal-1.webp',
     category: 'Airbnb',
     title: 'Rentabilidad con estilo',
     desc: 'Espacios diseñados para enamorar huéspedes y maximizar reservas.',
