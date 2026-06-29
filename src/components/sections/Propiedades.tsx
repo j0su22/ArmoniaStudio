@@ -82,6 +82,8 @@ export function Propiedades() {
                       alt={prop.name}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                       style={{ filter: 'saturate(0.85)' }}
+                      loading="lazy"
+                      decoding="async"
                     />
                   ) : (
                     <div className="w-full h-full bg-charcoal flex flex-col items-center justify-center gap-2">

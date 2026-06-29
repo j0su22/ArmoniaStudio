@@ -127,6 +127,8 @@ export function Portafolio() {
                         alt={project.name}
                         className="absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.06]"
                         style={{ filter: 'saturate(0.78)' }}
+                        loading="lazy"
+                        decoding="async"
                         onMouseEnter={(e) => (e.currentTarget.style.filter = 'saturate(1)')}
                         onMouseLeave={(e) => (e.currentTarget.style.filter = 'saturate(0.78)')}
                       />

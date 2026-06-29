@@ -6,10 +6,12 @@ export function EstiloCta() {
     <section className="grid grid-cols-1 lg:grid-cols-2 bg-cream-mid pt-12 pb-16">
       <div className="relative min-h-[420px] lg:min-h-[600px] overflow-hidden bg-cream-mid">
         <img
-          src="./images/portadas/hero-4.png"
+          src="./images/portadas/hero-4.webp"
           alt="Descubre tu estilo"
           className="absolute inset-0 w-full h-full object-contain"
           style={{ filter: 'saturate(0.85)' }}
+          loading="lazy"
+          decoding="async"
         />
       </div>
 

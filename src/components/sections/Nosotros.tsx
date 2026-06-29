@@ -10,10 +10,12 @@ export function Nosotros() {
         {/* Image */}
         <ScrollReveal className="relative">
           <img
-            src="./images/portadas/hero-4.png"
+            src="./images/portadas/hero-4.webp"
             alt="Equipo Armonía Estudio"
             className="w-full aspect-[3/4] object-cover"
             style={{ filter: 'saturate(0.85)' }}
+            loading="lazy"
+            decoding="async"
           />
         </ScrollReveal>
 
