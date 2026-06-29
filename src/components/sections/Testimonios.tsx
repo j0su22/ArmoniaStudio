@@ -24,7 +24,7 @@ export function Testimonios() {
             className="flex-shrink-0 w-[380px] mx-3 border border-white/[0.06] p-9 hover:border-sage transition-colors duration-300 flex flex-col"
           >
             <div className="flex gap-1 mb-5 text-sage text-[13px]">
-              {'★'.repeat(t.rating)}
+              {'★'.repeat(Math.min(t.rating, 5))}
             </div>
             <blockquote className="font-display text-[18px] font-light italic leading-[1.65] text-white/85 mb-6 flex-1">
               "{t.quote}"

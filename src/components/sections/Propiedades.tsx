@@ -20,8 +20,6 @@ export function Propiedades() {
       <PropertyModal
         property={selected}
         onClose={() => setSelected(null)}
-        onNext={() => setGallery(g => g ? { ...g, index: (g.index + 1) % g.images.length } : null)}
-        onGoTo={(i) => setGallery(g => g ? { ...g, index: i } : null)}
       />
     )}
     <section id="propiedades" className="bg-cream py-24 px-12 lg:px-16">
@@ -98,11 +96,15 @@ export function Propiedades() {
                   <span className="absolute top-3.5 left-3.5 bg-sage text-white text-[8px] font-bold tracking-[0.18em] uppercase px-2.5 py-1.5">
                     {prop.badge}
                   </span>
-                  {prop.gallery && prop.gallery.length > 1 && (
-                    <span className="absolute top-3.5 right-3.5 bg-charcoal/70 text-white text-[8px] font-semibold tracking-[0.08em] px-2 py-1.5">
-                      {prop.gallery.length} fotos
-                    </span>
-                  )}
+                  {prop.gallery && (() => {
+                    const noPortada = prop.gallery!.filter(s => s !== prop.image)
+                    const count = noPortada.length > 0 ? noPortada.length : prop.gallery!.length
+                    return count > 1 ? (
+                      <span className="absolute top-3.5 right-3.5 bg-charcoal/70 text-white text-[8px] font-semibold tracking-[0.08em] px-2 py-1.5">
+                        {count} fotos
+                      </span>
+                    ) : null
+                  })()}
                 </div>
                 <div className="p-5">
                   <p className="text-[12px] font-semibold text-charcoal mb-1">{prop.name}</p>

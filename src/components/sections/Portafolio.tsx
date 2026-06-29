@@ -102,7 +102,13 @@ export function Portafolio() {
         {/* Grid */}
         <div className="grid grid-cols-12 gap-4">
           <AnimatePresence mode="popLayout">
-            {filtered.map((project, i) => (
+            {filtered.map((project, i) => {
+              const origIdx = PROJECTS.findIndex(p => p.id === project.id)
+              const isAll = active === 'all'
+              const colSpan = isAll ? (GRID_SPANS[origIdx] ?? 'lg:col-span-6') : 'lg:col-span-6'
+              const fillHeight = isAll && FILL_HEIGHT[origIdx]
+              const aspectClass = isAll ? (ASPECT_RATIOS[origIdx] ?? 'aspect-[4/3]') : 'aspect-[4/3]'
+              return (
               <motion.div
                 key={project.id}
                 layout
@@ -110,10 +116,10 @@ export function Portafolio() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.94 }}
                 transition={{ duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94], delay: i * 0.04 }}
-                className={`col-span-12 ${GRID_SPANS[i] ?? 'lg:col-span-6'} relative overflow-hidden group cursor-pointer`}
+                className={`col-span-12 ${colSpan} relative overflow-hidden group cursor-pointer`}
                 onClick={() => project.gallery?.length && openGallery(project.gallery, project.name, project.gallerySections)}
               >
-                <div className={FILL_HEIGHT[i] ? 'relative h-full' : `relative ${ASPECT_RATIOS[i] ?? 'aspect-[4/3]'}`}>
+                <div className={fillHeight ? 'relative h-full' : `relative ${aspectClass}`}>
                   {project.image ? (
                     <>
                       <img
@@ -158,7 +164,8 @@ export function Portafolio() {
                   )}
                 </div>
               </motion.div>
-            ))}
+              )
+            })}
           </AnimatePresence>
         </div>
       </div>
