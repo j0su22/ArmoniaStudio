@@ -129,7 +129,7 @@ export const PROPERTIES: Property[] = [
     mode: 'venta',
     image: prop('ranchador-bodega', 'portada.jpg'),
     badge: 'En Venta',
-    gallery: ['portada.jpg', 'img_5195.jpg', 'img_5197.jpg', 'img_5199.jpg',
+    gallery: ['portada.jpg', 'img_5197.jpg', 'img_5199.jpg',
       'img_5200.jpg', 'img_5203.jpg', 'img_5206.jpg', 'img_5207.jpg',
       'img_5210.jpg', 'img_5213.jpg', 'img_5216.jpg'].map(f => prop('ranchador-bodega', f)),
   },

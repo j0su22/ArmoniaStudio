@@ -15,8 +15,10 @@ export function Propiedades() {
   const filtered = PROPERTIES.filter((p) => p.mode === mode)
 
   const openGallery = (prop: Property) => {
-    const images = prop.gallery ?? (prop.image ? [prop.image] : [])
-    if (images.length > 0) setGallery({ images, index: 0, title: prop.name })
+    const all = prop.gallery ?? (prop.image ? [prop.image] : [])
+    const images = all.filter((src) => src !== prop.image)
+    const display = images.length > 0 ? images : all
+    if (display.length > 0) setGallery({ images: display, index: 0, title: prop.name })
   }
 
   return (
