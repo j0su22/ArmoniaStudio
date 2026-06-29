@@ -24,7 +24,7 @@ const CONTACT_INFO = [
 export function Footer() {
   return (
     <footer className="bg-charcoal">
-      <div className="max-w-[1300px] mx-auto px-16 pt-16 pb-8">
+      <div className="max-w-[1300px] mx-auto px-6 sm:px-12 lg:px-16 pt-16 pb-8">
         {/* Top grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-12 border-b border-white/[0.06]">
           {/* Brand */}

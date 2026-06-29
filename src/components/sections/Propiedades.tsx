@@ -22,7 +22,7 @@ export function Propiedades() {
         onClose={() => setSelected(null)}
       />
     )}
-    <section id="propiedades" className="bg-cream py-24 px-12 lg:px-16">
+    <section id="propiedades" className="bg-cream py-24 px-6 sm:px-12 lg:px-16">
       <div className="max-w-[1300px] mx-auto">
         {/* Header */}
         <ScrollReveal>

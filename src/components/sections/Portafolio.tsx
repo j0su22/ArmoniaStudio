@@ -60,7 +60,7 @@ export function Portafolio() {
         onGoTo={(i) => setGallery(g => g ? { ...g, index: i } : null)}
       />
     )}
-    <section id="portafolio" className="bg-cream-mid pt-24 pb-10 px-12 lg:px-16">
+    <section id="portafolio" className="bg-cream-mid pt-24 pb-10 px-6 sm:px-12 lg:px-16">
       <div className="max-w-[1300px] mx-auto">
         {/* Header */}
         <ScrollReveal>

@@ -7,7 +7,7 @@ export function Testimonios() {
 
   return (
     <section id="testimonios" className="bg-charcoal py-24 overflow-hidden">
-      <div className="max-w-[1300px] mx-auto px-12 lg:px-16">
+      <div className="max-w-[1300px] mx-auto px-6 sm:px-12 lg:px-16">
         <ScrollReveal>
           <SectionLabel>Testimonios</SectionLabel>
           <h2 className="font-display text-[clamp(36px,4vw,58px)] font-light leading-[1.1] text-white mb-14">

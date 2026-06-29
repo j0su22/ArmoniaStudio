@@ -7,7 +7,7 @@ export function Hero() {
   return (
     <section id="inicio" className="min-h-svh grid grid-cols-1 lg:grid-cols-2 pt-[72px]">
       {/* Left */}
-      <div className="flex flex-col justify-center px-12 lg:px-16 py-20">
+      <div className="flex flex-col justify-center px-6 sm:px-12 lg:px-16 py-20">
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

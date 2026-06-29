@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/Button'
 
 export function Nosotros() {
   return (
-    <section id="nosotros" className="bg-cream py-24 px-12 lg:px-16">
+    <section id="nosotros" className="bg-cream py-24 px-6 sm:px-12 lg:px-16">
       <div className="max-w-[1300px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
         {/* Image */}
         <ScrollReveal className="relative">

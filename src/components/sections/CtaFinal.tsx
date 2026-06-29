@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/Button'
 
 export function CtaFinal() {
   return (
-    <section className="bg-sage py-24 px-12 lg:px-16 text-center">
+    <section className="bg-sage py-24 px-6 sm:px-12 lg:px-16 text-center">
       <div className="max-w-[800px] mx-auto">
         <ScrollReveal>
           <h2 className="font-display text-[clamp(36px,4.5vw,62px)] font-light leading-[1.15] text-white mb-4">

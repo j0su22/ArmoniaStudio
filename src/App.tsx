@@ -21,7 +21,7 @@ export default function App() {
         <Proposito />
         <ValoresBar />
         <Portafolio />
-        <div className="bg-cream-mid px-12 lg:px-16">
+        <div className="bg-cream-mid px-6 sm:px-12 lg:px-16">
           <div className="max-w-[1300px] mx-auto border-t border-cream-dark" />
         </div>
         <EstiloCta />

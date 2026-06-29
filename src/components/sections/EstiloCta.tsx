@@ -13,7 +13,7 @@ export function EstiloCta() {
         />
       </div>
 
-      <div className="flex flex-col justify-center px-12 lg:px-20 py-20">
+      <div className="flex flex-col justify-center px-6 sm:px-12 lg:px-20 py-20">
         <ScrollReveal>
           <p className="text-[10px] font-bold tracking-[0.28em] uppercase text-sage mb-5">
             ¿Por dónde empezar?

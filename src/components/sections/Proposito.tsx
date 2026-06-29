@@ -19,7 +19,7 @@ const PROP_CARDS = [
 
 export function Proposito() {
   return (
-    <section className="bg-cream py-24 px-12 lg:px-16">
+    <section className="bg-cream py-24 px-6 sm:px-12 lg:px-16">
       <div className="max-w-[1300px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         {/* Text */}
         <div>
