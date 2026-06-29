@@ -1,5 +1,4 @@
 import { Phone, Mail, MapPin } from 'lucide-react'
-import { SOCIAL_LINKS } from '@/data'
 
 const DESIGN_LINKS = [
   { label: 'Portafolio', href: '#portafolio' },
