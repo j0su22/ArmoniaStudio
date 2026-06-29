@@ -294,7 +294,11 @@ export const PROPERTIES: Property[] = [
       'Acceso caminable a restaurantes, cafés, bancos, hoteles y supermercados',
       'Seguridad 24/7 · Mantenimiento incluido',
     ],
-    gallery: PDA_SECTIONS.filter((s) => s.label !== 'Antes y Después').flatMap((s) => s.images),
+    gallery: [
+      '2','4','6','8','10','12','14','16',
+      'img_9405','img_9409','img_9412','img_9418','img_9420','img_9423',
+      'img_9426','img_9428','img_9430','img_9433','img_9436','img_9448','img_9453','img_9460',
+    ].map(n => `./images/propiedades/puerta-del-alma-prop/${n}.webp`),
   },
   {
     id: 'park-tower-prop',
