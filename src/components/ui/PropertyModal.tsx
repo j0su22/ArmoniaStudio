@@ -49,7 +49,7 @@ export function PropertyModal({ property, onClose }: Props) {
 
         {/* Modal — full screen with small inset */}
         <motion.div
-          className="relative m-3 lg:m-6 w-full max-w-[1400px] bg-cream flex flex-col lg:flex-row overflow-hidden shadow-2xl"
+          className="relative m-3 lg:m-6 w-full max-w-[1400px] bg-cream flex flex-col lg:flex-row overflow-y-auto lg:overflow-hidden shadow-2xl"
           initial={{ opacity: 0, scale: 0.97, y: 12 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.97, y: 12 }}
@@ -64,7 +64,7 @@ export function PropertyModal({ property, onClose }: Props) {
           </button>
 
           {/* LEFT — 30% — portada + info */}
-          <div className="max-h-[55%] lg:max-h-none lg:w-[30%] flex flex-col border-r border-cream-dark overflow-y-auto">
+          <div className="lg:w-[30%] flex flex-col border-r border-cream-dark lg:overflow-y-auto">
             {/* Portada */}
             {property.image ? (
               <div className="relative w-full aspect-[4/3] flex-shrink-0 overflow-hidden">
@@ -184,7 +184,7 @@ export function PropertyModal({ property, onClose }: Props) {
           </div>
 
           {/* RIGHT — 70% — galería */}
-          <div className="flex-1 min-h-0 lg:flex-none lg:w-[70%] flex flex-col bg-cream-mid overflow-hidden">
+          <div className="lg:w-[70%] flex flex-col bg-cream-mid overflow-hidden min-h-[320px] lg:min-h-0">
             {images.length > 0 ? (
               <>
                 {/* Main image */}
