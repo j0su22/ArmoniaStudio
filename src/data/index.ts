@@ -4,7 +4,7 @@ const pda = (file: string) => `./images/portafolio/puerta-del-alma/${file}`
 
 const PDA_SECTIONS = [
   { label: 'Portada',             images: [pda('portada.webp')] },
-  { label: 'Sala',                images: [1,2,3,4,6,7,8,9,10,11,12].map(n => pda(`sala-${n}.webp`)) },
+  { label: 'Sala',                images: [1,3,4,6,7,9,10,12].map(n => pda(`sala-${n}.webp`)) },
   { label: 'Dormitorio Principal',images: [1,3,4,5,6,7,8,9,11,13,15,18,20,21,22,23].map(n => pda(`dorm-principal-${n}.webp`)) },
   { label: 'Dormitorio Junior',   images: [1,2,3,5,6,7,8,12].map(n => pda(`dorm-junior-${n}.webp`)) },
   { label: 'Cocina y Comedor',    images: Array.from({ length: 7 },  (_, i) => pda(`cocina-${i + 1}.webp`)) },
