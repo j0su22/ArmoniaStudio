@@ -12,7 +12,7 @@ const PDA_SECTIONS = [
   { label: 'Baño Dormitorio',     images: [1,2,4,6].map(n => pda(`bano-dorm-${n}.webp`)) },
   { label: 'Espacio Integrado',   images: Array.from({ length: 7 },  (_, i) => pda(`espacio-${i + 1}.webp`)) },
   { label: 'Terraza',             images: Array.from({ length: 3 },  (_, i) => pda(`terraza-${i + 1}.webp`)) },
-  { label: 'Antes y Después',     images: Array.from({ length: 17 }, (_, i) => pda(`antes-despues-${i + 1}.webp`)) },
+  { label: 'Antes y Después',     images: [17,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16].map(n => pda(`antes-despues-${n}.webp`)) },
 ]
 
 export const PROJECTS: Project[] = [
