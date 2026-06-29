@@ -270,6 +270,7 @@ export const PROPERTIES: Property[] = [
     badge: 'En Venta',
     price: '$430,000 · Incluye muebles',
     area: '102 m²',
+    description: 'Puerta del Alma, San Benito, apartamento moderno a estrenar amueblado en un 100% con vista espectacular. Vive o disfruta una estadía de lujo en el corazón de San Benito, frente a Multiplaza. Nivel 7, Torre 3. Vista panorámica, acabados modernos, totalmente amueblado y decorado con estilo.',
     features: [
       'Dormitorio principal',
       'Dormitorio secundario',
