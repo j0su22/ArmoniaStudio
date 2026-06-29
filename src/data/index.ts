@@ -5,8 +5,8 @@ const pda = (file: string) => `./images/portafolio/puerta-del-alma/${file}`
 const PDA_SECTIONS = [
   { label: 'Portada',             images: [pda('portada.webp')] },
   { label: 'Sala',                images: Array.from({ length: 12 }, (_, i) => pda(`sala-${i + 1}.webp`)) },
-  { label: 'Dormitorio Principal',images: Array.from({ length: 23 }, (_, i) => pda(`dorm-principal-${i + 1}.webp`)) },
-  { label: 'Dormitorio Junior',   images: Array.from({ length: 12 }, (_, i) => pda(`dorm-junior-${i + 1}.webp`)) },
+  { label: 'Dormitorio Principal',images: Array.from({ length: 23 }, (_, i) => i + 1 !== 16 ? pda(`dorm-principal-${i + 1}.webp`) : null).filter(Boolean) as string[] },
+  { label: 'Dormitorio Junior',   images: Array.from({ length: 12 }, (_, i) => i + 1 !== 4  ? pda(`dorm-junior-${i + 1}.webp`)   : null).filter(Boolean) as string[] },
   { label: 'Cocina y Comedor',    images: Array.from({ length: 7 },  (_, i) => pda(`cocina-${i + 1}.webp`)) },
   { label: 'Baño Social',         images: Array.from({ length: 3 },  (_, i) => pda(`bano-social-${i + 1}.webp`)) },
   { label: 'Baño Dormitorio',     images: Array.from({ length: 7 },  (_, i) => pda(`bano-dorm-${i + 1}.webp`)) },
