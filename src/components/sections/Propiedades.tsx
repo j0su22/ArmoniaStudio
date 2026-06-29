@@ -72,8 +72,8 @@ export function Propiedades() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.4, delay: i * 0.06 }}
-                className="bg-cream-mid overflow-hidden group hover:-translate-y-1 hover:shadow-xl transition-all duration-300 cursor-pointer"
-                onClick={() => setSelected(prop)}
+                className={`bg-cream-mid overflow-hidden group transition-all duration-300 ${prop.image ? 'hover:-translate-y-1 hover:shadow-xl cursor-pointer' : 'cursor-default'}`}
+                onClick={() => prop.image && setSelected(prop)}
               >
                 <div className="relative overflow-hidden aspect-[4/3]">
                   {prop.image ? (
@@ -111,14 +111,16 @@ export function Propiedades() {
                 <div className="p-5">
                   <p className="text-[12px] font-semibold text-charcoal mb-1">{prop.name}</p>
                   <p className="text-[11px] font-light text-muted mb-3.5">{prop.location}</p>
-                  <div className="pt-3.5 border-t border-cream-dark">
-                    <button
-                      onClick={() => setSelected(prop)}
-                      className="text-[10px] font-bold tracking-[0.12em] uppercase text-sage hover:text-sage-dark transition-colors duration-200"
-                    >
-                      Ver detalle
-                    </button>
-                  </div>
+                  {prop.image && (
+                    <div className="pt-3.5 border-t border-cream-dark">
+                      <button
+                        onClick={() => setSelected(prop)}
+                        className="text-[10px] font-bold tracking-[0.12em] uppercase text-sage hover:text-sage-dark transition-colors duration-200"
+                      >
+                        Ver detalle
+                      </button>
+                    </div>
+                  )}
                 </div>
               </motion.article>
             ))}
