@@ -3,17 +3,19 @@ import { Button } from '@/components/ui/Button'
 
 export function EstiloCta() {
   return (
-    <section className="grid grid-cols-1 lg:grid-cols-2 bg-cream-mid">
-      <div className="relative min-h-[360px] lg:min-h-full overflow-hidden">
+    <section className="grid grid-cols-1 lg:grid-cols-2 bg-cream-mid pt-12 pb-16">
+      <div className="relative min-h-[420px] lg:min-h-[600px] overflow-hidden bg-cream-mid">
         <img
-          src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=900&q=80&auto=format&fit=crop"
+          src="./images/portadas/hero-4.webp"
           alt="Descubre tu estilo"
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-contain"
           style={{ filter: 'saturate(0.85)' }}
+          loading="lazy"
+          decoding="async"
         />
       </div>
 
-      <div className="flex flex-col justify-center px-12 lg:px-20 py-20">
+      <div className="flex flex-col justify-center px-6 sm:px-12 lg:px-20 py-20">
         <ScrollReveal>
           <p className="text-[10px] font-bold tracking-[0.28em] uppercase text-sage mb-5">
             ¿Por dónde empezar?

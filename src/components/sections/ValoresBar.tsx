@@ -11,7 +11,7 @@ const VALORES = [
 
 export function ValoresBar() {
   return (
-    <div className="bg-charcoal py-14 px-12 lg:px-16">
+    <div className="bg-charcoal py-14 px-6 sm:px-12 lg:px-16">
       <div className="max-w-[1300px] mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
         {VALORES.map((v, i) => (
           <ScrollReveal key={v.name} delay={i * 0.1}>

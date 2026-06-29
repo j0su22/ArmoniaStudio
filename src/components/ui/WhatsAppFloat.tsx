@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 export function WhatsAppFloat() {
   return (
     <motion.a
-      href="https://wa.me/50300000000"
+      href="https://wa.me/50373473219?text=Hola%2C%20me%20contacto%20desde%20el%20sitio%20web%20de%20Armon%C3%ADa%20Estudio."
       target="_blank"
       rel="noopener noreferrer"
       aria-label="WhatsApp"
